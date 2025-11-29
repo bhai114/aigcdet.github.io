@@ -13,7 +13,7 @@
     {%- include footer.html %}
 
     <!-- Modern Custom JavaScript -->
-    <script src="{{ "/js/custom-modern.js" | prepend: site.baseurl }}"></script>
+    <script src="{{ "/js/custom-modern.js" | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}"></script>
 
     <!-- Image to hack wechat -->
     <img src="/img/apple-touch-icon.png" width="0" height="0" />

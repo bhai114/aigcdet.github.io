@@ -39,7 +39,10 @@
     <link rel="stylesheet" href="{{ "/css/clean-blog.css" | prepend: site.baseurl }}?v=1.1">
 
     <!-- Modern Custom CSS -->
-    <link rel="stylesheet" href="{{ "/css/custom-modern.css" | prepend: site.baseurl }}?v=1.0">
+    <link rel="stylesheet" href="{{ "/css/custom-modern.css" | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}">
+
+    <!-- Modern Override CSS - 强制覆盖原有样式 -->
+    <link rel="stylesheet" href="{{ "/css/custom-modern-override.css" | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
