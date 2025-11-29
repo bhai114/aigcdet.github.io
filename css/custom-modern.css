@@ -1,0 +1,396 @@
+/* =============================================
+   现代化博客增强样式
+   作者: AI助手
+   日期: 2025
+   ============================================= */
+
+/* ============ 全局样式优化 ============ */
+
+/* 平滑滚动 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 选择文本颜色 */
+::selection {
+    background: #0085a1;
+    color: #fff;
+    text-shadow: none;
+}
+
+::-moz-selection {
+    background: #0085a1;
+    color: #fff;
+    text-shadow: none;
+}
+
+/* ============ 动画效果 ============ */
+
+/* 渐入动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 应用渐入动画到文章卡片 */
+.post-preview {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.post-preview:nth-child(1) { animation-delay: 0.1s; }
+.post-preview:nth-child(2) { animation-delay: 0.2s; }
+.post-preview:nth-child(3) { animation-delay: 0.3s; }
+.post-preview:nth-child(4) { animation-delay: 0.4s; }
+.post-preview:nth-child(5) { animation-delay: 0.5s; }
+
+/* ============ 增强的文章卡片效果 ============ */
+
+/* 文章卡片顶部彩色渐变条 */
+.post-preview::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0085a1 0%, #00b4d8 50%, #90e0ef 100%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.post-preview:hover::after {
+    opacity: 1;
+}
+
+/* ============ 增强的导航栏效果 ============ */
+
+/* 导航栏下拉动画 */
+.navbar-custom {
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 导航链接下划线效果 */
+.navbar-custom .nav li a {
+    position: relative;
+    display: inline-block;
+}
+
+.navbar-custom .nav li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #0085a1;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-custom .nav li a:hover::after {
+    width: 80%;
+}
+
+/* ============ 友好的友情链接样式 ============ */
+
+.sidebar-container ul.list-inline li {
+    margin: 8px 5px;
+}
+
+.sidebar-container ul.list-inline li a {
+    display: inline-block;
+    padding: 6px 12px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.sidebar-container ul.list-inline li a:hover {
+    background: linear-gradient(135deg, #0085a1 0%, #00b4d8 100%);
+    color: #fff !important;
+    border-color: #0085a1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,133,161,0.3);
+}
+
+/* ============ 社交媒体图标增强 ============ */
+
+.list-inline .fa-stack {
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.list-inline .fa-circle {
+    color: #e9ecef;
+    transition: all 0.3s;
+}
+
+.list-inline .fa-stack:hover .fa-circle {
+    color: #0085a1;
+}
+
+.list-inline .fa-stack .fa-inverse {
+    color: #555;
+    transition: all 0.3s;
+}
+
+.list-inline .fa-stack:hover .fa-inverse {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* ============ 响应式表格 ============ */
+
+.post-container table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.post-container table thead {
+    background: linear-gradient(135deg, #0085a1 0%, #00b4d8 100%);
+    color: #fff;
+}
+
+.post-container table th,
+.post-container table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: none;
+}
+
+.post-container table tbody tr {
+    transition: background 0.2s;
+}
+
+.post-container table tbody tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.post-container table tbody tr:hover {
+    background: #e9ecef;
+}
+
+/* ============ 代码块美化 ============ */
+
+pre {
+    background: #282c34;
+    color: #abb2bf;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    overflow-x: auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+code {
+    background: #f6f8fa;
+    color: #e83e8c;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+
+/* ============ 引用块美化 ============ */
+
+blockquote {
+    border-left: 4px solid #0085a1;
+    background: #f8f9fa;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+blockquote p {
+    margin: 0;
+    font-style: italic;
+    color: #555;
+}
+
+/* ============ 图片优化 ============ */
+
+.post-container img {
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.post-container img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* ============ 按钮样式 ============ */
+
+.btn {
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0085a1 0%, #00b4d8 100%);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #006d85 0%, #0099bd 100%);
+}
+
+/* ============ Footer优化 ============ */
+
+footer {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+footer .copyright {
+    color: #6c757d;
+}
+
+footer .copyright a {
+    color: #0085a1;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer .copyright a:hover {
+    color: #006d85;
+}
+
+/* ============ 回到顶部按钮 ============ */
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #0085a1 0%, #00b4d8 100%);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,133,161,0.4);
+    transition: all 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,133,161,0.5);
+}
+
+/* ============ 移动端优化 ============ */
+
+@media (max-width: 768px) {
+    /* 减小间距 */
+    .post-preview {
+        padding: 25px 20px;
+        margin-bottom: 20px;
+        border-radius: 16px;
+    }
+    
+    /* 调整标题大小 */
+    .post-title {
+        font-size: 20px;
+    }
+    
+    .post-subtitle {
+        font-size: 15px;
+    }
+    
+    /* 调整侧边栏 */
+    .sidebar-container section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    /* 优化导航栏 */
+    .navbar-custom {
+        background: rgba(255, 255, 255, 0.98) !important;
+    }
+    
+    /* 回到顶部按钮 */
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* ============ 暗色模式支持（可选） ============ */
+
+@media (prefers-color-scheme: dark) {
+    /* 如果需要暗色模式，可以在这里添加样式 */
+}
+
+/* ============ 打印样式 ============ */
+
+@media print {
+    .navbar-custom,
+    .sidebar-container,
+    .pager,
+    footer .list-inline,
+    .back-to-top {
+        display: none;
+    }
+    
+    .post-preview {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+}
+
