@@ -48,6 +48,7 @@ plugins: [jekyll-paginate]
 # replace redcarpet to kramdown,
 # although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
 # document: http://jekyllrb.com/docs/configuration/#kramdown
+encoding: utf-8
 markdown: kramdown
 highlighter: rouge
 kramdown:

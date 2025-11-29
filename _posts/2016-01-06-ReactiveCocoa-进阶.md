@@ -6,6 +6,7 @@ date:       2017-01-06
 author:     BY
 header-img: img/post-bg-ios9-web.jpg
 catalog: true
+permalink: /2017/01/06/reactive-cocoa-advanced/
 tags:
     - iOS
     - ReactiveCocoa
