@@ -24,8 +24,8 @@
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ "/css/hux-blog.min.css" | prepend: site.baseurl }}?v=1.1">
+    <!-- Custom CSS - 改用未压缩版本以应用美化样式 -->
+    <link rel="stylesheet" href="{{ "/css/hux-blog.css" | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}">
 
     <!-- Pygments Github CSS -->
     <link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl }}">
