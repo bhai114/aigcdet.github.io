@@ -1,0 +1,245 @@
+---
+layout: post
+title: HTML文章示例
+subtitle: 这是一个HTML格式的文章模板
+date: 2025-11-29
+author: 作者名
+tags:
+    - 示例
+    - HTML
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* 文章内容样式 */
+        .article-content {
+            max-width: 100%;
+            line-height: 1.8;
+        }
+        
+        .article-content h2 {
+            color: #667eea;
+            font-size: 28px;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .article-content h3 {
+            color: #333;
+            font-size: 22px;
+            margin: 30px 0 15px;
+        }
+        
+        .article-content p {
+            margin: 15px 0;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .article-content ul, 
+        .article-content ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        .article-content li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+        
+        .article-content code {
+            background: #f5f5f5;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #e83e8c;
+            font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+        }
+        
+        .article-content pre {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .article-content pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+        
+        .article-content blockquote {
+            border-left: 4px solid #667eea;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .article-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .article-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .article-content table th,
+        .article-content table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .article-content table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .info-box {
+            background: #e8f4f8;
+            border-left: 4px solid #17a2b8;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="article-content">
+        <!-- 文章开始 -->
+        
+        <h2>📝 一级标题示例</h2>
+        <p>这是一个段落。您可以在这里写任何内容。HTML 格式让您有完全的控制权来设计文章的样式和布局。</p>
+        
+        <h3>二级标题示例</h3>
+        <p>使用 HTML，您可以：</p>
+        <ul>
+            <li>精确控制每个元素的样式</li>
+            <li>添加自定义的 CSS 类和样式</li>
+            <li>嵌入 JavaScript 实现交互效果</li>
+            <li>使用更多的 HTML 标签和属性</li>
+        </ul>
+        
+        <h3>代码示例</h3>
+        <p>内联代码：<code>const greeting = "Hello World";</code></p>
+        
+        <p>代码块：</p>
+        <pre><code>function sayHello() {
+    console.log("Hello, World!");
+    return true;
+}</code></pre>
+        
+        <h3>引用示例</h3>
+        <blockquote>
+            这是一个引用块。您可以在这里引用名言或重要信息。
+        </blockquote>
+        
+        <h3>特殊提示框</h3>
+        
+        <div class="highlight-box">
+            <strong>💡 重点提示：</strong> 这是一个高亮提示框，用于强调重要信息。
+        </div>
+        
+        <div class="info-box">
+            <strong>ℹ️ 信息：</strong> 这是一个信息提示框，用于提供额外的说明。
+        </div>
+        
+        <div class="warning-box">
+            <strong>⚠️ 注意：</strong> 这是一个警告提示框，用于提醒注意事项。
+        </div>
+        
+        <h3>表格示例</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>项目</th>
+                    <th>描述</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HTML 文章</td>
+                    <td>使用 HTML 编写文章</td>
+                    <td>✅ 完成</td>
+                </tr>
+                <tr>
+                    <td>样式美化</td>
+                    <td>添加自定义 CSS 样式</td>
+                    <td>✅ 完成</td>
+                </tr>
+                <tr>
+                    <td>响应式设计</td>
+                    <td>适配移动端</td>
+                    <td>✅ 完成</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>列表示例</h3>
+        <h4>有序列表：</h4>
+        <ol>
+            <li>第一步：创建 HTML 文件</li>
+            <li>第二步：添加内容和样式</li>
+            <li>第三步：保存到 _posts 文件夹</li>
+            <li>第四步：提交到 GitHub</li>
+        </ol>
+        
+        <h4>无序列表：</h4>
+        <ul>
+            <li>支持丰富的格式</li>
+            <li>完全自定义样式</li>
+            <li>易于维护和更新</li>
+        </ul>
+        
+        <h2>🎯 总结</h2>
+        <p>
+            使用 HTML 格式编写文章，您可以获得更大的灵活性和控制权。
+            虽然需要写更多的标签，但您可以实现任何想要的效果。
+        </p>
+        
+        <p>
+            <strong>优点：</strong>
+        </p>
+        <ul>
+            <li>✅ 完全控制样式</li>
+            <li>✅ 可以添加复杂的布局</li>
+            <li>✅ 支持自定义组件</li>
+            <li>✅ 可以嵌入 JavaScript</li>
+        </ul>
+        
+        <!-- 文章结束 -->
+    </div>
+</body>
+</html>
+
