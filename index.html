@@ -345,7 +345,7 @@ layout: null
         
         <div class="posts-list">
             {% for post in site.posts %}
-            <a href="{{ post.url | prepend: site.baseurl }}" class="post-item">
+            <a href="{{ site.baseurl }}{{ post.url }}" class="post-item">
                 <div class="post-header">
                     <h3 class="post-title">{{ post.title }}</h3>
                     <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
@@ -364,6 +364,11 @@ layout: null
                     {% endfor %}
                 </div>
                 {% endif %}
+                
+                <!-- 调试信息 -->
+                <small style="color: #999; font-size: 11px; display: block; margin-top: 10px;">
+                    链接: {{ site.baseurl }}{{ post.url }}
+                </small>
             </a>
             {% endfor %}
             
