@@ -1,0 +1,679 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发计划 - AIGC检测项目路线图</title>
+    <meta name="description" content="AIGC检测项目的详细开发计划、功能规划和技术路线">
+    
+    <style>
+        /* ========== 全局样式 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        /* ========== 顶部导航 ========== */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateX(-5px);
+        }
+
+        /* ========== 文章容器 ========== */
+        .article-container {
+            max-width: 850px;
+            margin: 100px auto 60px;
+            padding: 0 30px;
+        }
+
+        /* ========== 文章头部 ========== */
+        .article-header {
+            background: white;
+            padding: 50px;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        .article-title {
+            font-size: 40px;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .article-meta span::before {
+            margin-right: 6px;
+        }
+
+        .meta-author::before { content: '✍️'; }
+        .meta-date::before { content: '📅'; }
+
+        /* ========== 文章内容 ========== */
+        .article-content {
+            background: white;
+            padding: 60px 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+        }
+
+        .article-content h2 {
+            color: #667eea;
+            font-size: 28px;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .article-content h3 {
+            color: #333;
+            font-size: 22px;
+            margin: 30px 0 15px;
+        }
+
+        .article-content h4 {
+            color: #555;
+            font-size: 18px;
+            margin: 25px 0 12px;
+        }
+
+        .article-content p {
+            margin: 15px 0;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.9;
+        }
+
+        .article-content ul, 
+        .article-content ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        .article-content li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        .article-content code {
+            background: #f5f5f5;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #e83e8c;
+            font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+        }
+
+        .article-content pre {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .article-content pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        .article-content blockquote {
+            border-left: 4px solid #667eea;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .article-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .article-content table th,
+        .article-content table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .article-content table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .article-content table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* ========== 特殊提示框 ========== */
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .info-box {
+            background: #e8f4f8;
+            border-left: 4px solid #17a2b8;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* ========== 底部 ========== */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            opacity: 0.9;
+        }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 768px) {
+            .article-header,
+            .article-content {
+                padding: 30px 25px;
+            }
+
+            .article-title {
+                font-size: 28px;
+            }
+
+            .article-subtitle {
+                font-size: 16px;
+            }
+
+            .article-content h2 { font-size: 24px; }
+            .article-content h3 { font-size: 20px; }
+        }
+
+        /* ========== 滚动条美化 ========== */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/aigcdet.github.io/" class="logo">✨ 我的博客</a>
+            <a href="/aigcdet.github.io/" class="back-link">← 返回首页</a>
+        </nav>
+    </header>
+
+    <!-- 文章内容 -->
+    <div class="article-container">
+        <!-- 文章头部 -->
+        <header class="article-header">
+            <h1 class="article-title">开发计划</h1>
+            <p class="article-subtitle">AIGC检测项目开发路线图与技术规划</p>
+            
+            <div class="article-meta">
+                <span class="meta-author">AIGC检测团队</span>
+                <span class="meta-date">2025-11-29</span>
+            </div>
+        </header>
+
+        <!-- 文章正文 -->
+        <article class="article-content">
+            <h2>📋 项目概述</h2>
+            <p>
+                AIGC检测项目旨在构建一套完整的AI生成内容检测系统，涵盖<strong>文字鉴伪</strong>、<strong>图像鉴伪</strong>和<strong>事实性检测</strong>三大核心功能。
+                本项目将采用先进的人工智能技术，为内容真实性提供可靠保障。
+            </p>
+
+            <div class="highlight-box">
+                <strong>💡 项目愿景：</strong> 打造业界领先的AIGC检测平台，为教育、媒体、法律等领域提供可靠的内容真实性检测服务。
+            </div>
+
+            <h2>🎯 项目目标</h2>
+            <ul>
+                <li><strong>准确性：</strong> 检测准确率达到 90% 以上</li>
+                <li><strong>实时性：</strong> 单次检测响应时间控制在 3 秒以内</li>
+                <li><strong>可扩展性：</strong> 支持多种内容格式和检测场景</li>
+                <li><strong>易用性：</strong> 提供友好的API接口和Web界面</li>
+            </ul>
+
+            <h2>📅 开发阶段规划</h2>
+
+            <h3>第一阶段：基础架构搭建（1-2个月）</h3>
+            <div class="info-box">
+                <strong>📅 时间：</strong> 2025年12月 - 2026年1月
+            </div>
+            <ul>
+                <li><strong>项目初始化：</strong> 搭建开发环境，配置CI/CD流程</li>
+                <li><strong>数据库设计：</strong> 设计数据模型，建立数据库架构</li>
+                <li><strong>API框架：</strong> 搭建RESTful API服务框架</li>
+                <li><strong>前端基础：</strong> 开发Web管理界面基础框架</li>
+                <li><strong>测试环境：</strong> 建立测试和开发环境</li>
+            </ul>
+
+            <h3>第二阶段：核心功能开发（2-3个月）</h3>
+            <div class="info-box">
+                <strong>📅 时间：</strong> 2026年2月 - 2026年4月
+            </div>
+            
+            <h4>2.1 文字鉴伪模块</h4>
+            <ul>
+                <li>实现统计特征提取算法</li>
+                <li>训练文本分类模型</li>
+                <li>开发水印嵌入和检测功能</li>
+                <li>优化检测准确率和速度</li>
+            </ul>
+
+            <h4>2.2 图像鉴伪模块</h4>
+            <ul>
+                <li>实现图像特征提取</li>
+                <li>训练图像分类模型</li>
+                <li>开发深度伪造检测算法</li>
+                <li>支持多种图像格式</li>
+            </ul>
+
+            <h4>2.3 事实性检测模块</h4>
+            <ul>
+                <li>构建知识库系统</li>
+                <li>实现事实提取和验证</li>
+                <li>开发多源信息对比功能</li>
+                <li>建立可信度评分机制</li>
+            </ul>
+
+            <h3>第三阶段：系统集成与优化（1-2个月）</h3>
+            <div class="info-box">
+                <strong>📅 时间：</strong> 2026年5月 - 2026年6月
+            </div>
+            <ul>
+                <li><strong>模块集成：</strong> 整合三大检测模块</li>
+                <li><strong>性能优化：</strong> 优化算法性能，提升响应速度</li>
+                <li><strong>界面完善：</strong> 完善Web界面和用户体验</li>
+                <li><strong>API文档：</strong> 编写完整的API文档</li>
+                <li><strong>安全加固：</strong> 加强系统安全性和稳定性</li>
+            </ul>
+
+            <h3>第四阶段：测试与发布（1个月）</h3>
+            <div class="info-box">
+                <strong>📅 时间：</strong> 2026年7月
+            </div>
+            <ul>
+                <li><strong>功能测试：</strong> 全面测试所有功能模块</li>
+                <li><strong>性能测试：</strong> 进行压力测试和性能评估</li>
+                <li><strong>用户测试：</strong> 邀请内测用户进行体验</li>
+                <li><strong>文档完善：</strong> 完善用户手册和技术文档</li>
+                <li><strong>正式发布：</strong> 发布v1.0正式版本</li>
+            </ul>
+
+            <h2>🛠️ 技术栈选择</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>模块</th>
+                        <th>技术选型</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>后端框架</td>
+                        <td>Python + FastAPI</td>
+                        <td>高性能异步框架，支持快速开发</td>
+                    </tr>
+                    <tr>
+                        <td>机器学习</td>
+                        <td>PyTorch / TensorFlow</td>
+                        <td>深度学习模型训练和推理</td>
+                    </tr>
+                    <tr>
+                        <td>数据库</td>
+                        <td>PostgreSQL + Redis</td>
+                        <td>关系型数据库 + 缓存</td>
+                    </tr>
+                    <tr>
+                        <td>前端框架</td>
+                        <td>React + TypeScript</td>
+                        <td>现代化前端开发</td>
+                    </tr>
+                    <tr>
+                        <td>部署</td>
+                        <td>Docker + Kubernetes</td>
+                        <td>容器化部署，支持弹性扩展</td>
+                    </tr>
+                    <tr>
+                        <td>监控</td>
+                        <td>Prometheus + Grafana</td>
+                        <td>系统监控和性能分析</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>👥 团队分工</h2>
+
+            <h3>后端开发组（3人）</h3>
+            <ul>
+                <li>负责API开发和业务逻辑实现</li>
+                <li>负责数据库设计和优化</li>
+                <li>负责系统架构设计</li>
+            </ul>
+
+            <h3>算法组（4人）</h3>
+            <ul>
+                <li>负责检测算法研发和优化</li>
+                <li>负责模型训练和调优</li>
+                <li>负责数据收集和标注</li>
+            </ul>
+
+            <h3>前端开发组（2人）</h3>
+            <ul>
+                <li>负责Web界面开发</li>
+                <li>负责用户体验优化</li>
+                <li>负责移动端适配</li>
+            </ul>
+
+            <h3>测试组（2人）</h3>
+            <ul>
+                <li>负责功能测试和性能测试</li>
+                <li>负责自动化测试脚本编写</li>
+                <li>负责质量保证</li>
+            </ul>
+
+            <h2>📊 里程碑计划</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>里程碑</th>
+                        <th>时间节点</th>
+                        <th>交付物</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>M1: 项目启动</td>
+                        <td>2025-12-01</td>
+                        <td>项目计划、技术方案</td>
+                        <td>✅ 已完成</td>
+                    </tr>
+                    <tr>
+                        <td>M2: 基础架构完成</td>
+                        <td>2026-01-31</td>
+                        <td>开发环境、数据库、API框架</td>
+                        <td>🔄 进行中</td>
+                    </tr>
+                    <tr>
+                        <td>M3: 文字鉴伪模块</td>
+                        <td>2026-03-15</td>
+                        <td>文字检测功能、API接口</td>
+                        <td>⏳ 待开始</td>
+                    </tr>
+                    <tr>
+                        <td>M4: 图像鉴伪模块</td>
+                        <td>2026-04-15</td>
+                        <td>图像检测功能、API接口</td>
+                        <td>⏳ 待开始</td>
+                    </tr>
+                    <tr>
+                        <td>M5: 事实性检测模块</td>
+                        <td>2026-05-15</td>
+                        <td>事实检测功能、知识库</td>
+                        <td>⏳ 待开始</td>
+                    </tr>
+                    <tr>
+                        <td>M6: 系统集成</td>
+                        <td>2026-06-30</td>
+                        <td>完整系统、Web界面</td>
+                        <td>⏳ 待开始</td>
+                    </tr>
+                    <tr>
+                        <td>M7: 正式发布</td>
+                        <td>2026-07-31</td>
+                        <td>v1.0正式版、文档</td>
+                        <td>⏳ 待开始</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>💰 资源需求</h2>
+
+            <h3>硬件资源</h3>
+            <ul>
+                <li><strong>GPU服务器：</strong> 4台 NVIDIA A100（用于模型训练）</li>
+                <li><strong>CPU服务器：</strong> 8台（用于API服务和数据库）</li>
+                <li><strong>存储：</strong> 100TB（用于数据存储）</li>
+                <li><strong>网络：</strong> 高带宽网络连接</li>
+            </ul>
+
+            <h3>软件资源</h3>
+            <ul>
+                <li>开发工具和IDE许可证</li>
+                <li>云服务平台（AWS/Azure/阿里云）</li>
+                <li>监控和日志服务</li>
+                <li>代码管理和CI/CD工具</li>
+            </ul>
+
+            <h3>人力资源</h3>
+            <ul>
+                <li>开发人员：11人</li>
+                <li>项目经理：1人</li>
+                <li>产品经理：1人</li>
+                <li>运维人员：2人</li>
+            </ul>
+
+            <h2>⚠️ 风险与应对</h2>
+
+            <div class="warning-box">
+                <strong>⚠️ 主要风险：</strong>
+            </div>
+
+            <h3>技术风险</h3>
+            <ul>
+                <li><strong>检测准确率不达标：</strong> 持续优化算法，增加训练数据</li>
+                <li><strong>性能瓶颈：</strong> 优化模型结构，使用模型压缩技术</li>
+                <li><strong>新模型挑战：</strong> 建立持续学习机制，及时更新检测模型</li>
+            </ul>
+
+            <h3>进度风险</h3>
+            <ul>
+                <li><strong>开发延期：</strong> 建立敏捷开发流程，及时调整计划</li>
+                <li><strong>人员变动：</strong> 建立知识文档，做好人员备份</li>
+                <li><strong>需求变更：</strong> 建立需求管理流程，控制变更范围</li>
+            </ul>
+
+            <h3>质量风险</h3>
+            <ul>
+                <li><strong>测试不充分：</strong> 建立完善的测试体系，自动化测试</li>
+                <li><strong>安全漏洞：</strong> 定期安全审计，建立安全开发规范</li>
+                <li><strong>用户体验差：</strong> 早期用户测试，持续优化界面</li>
+            </ul>
+
+            <h2>📈 成功指标</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>指标</th>
+                        <th>目标值</th>
+                        <th>测量方法</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>检测准确率</td>
+                        <td>≥ 90%</td>
+                        <td>使用标准测试集评估</td>
+                    </tr>
+                    <tr>
+                        <td>响应时间</td>
+                        <td>≤ 3秒</td>
+                        <td>API响应时间统计</td>
+                    </tr>
+                    <tr>
+                        <td>系统可用性</td>
+                        <td>≥ 99.5%</td>
+                        <td>系统运行时间监控</td>
+                    </tr>
+                    <tr>
+                        <td>用户满意度</td>
+                        <td>≥ 4.5/5.0</td>
+                        <td>用户调研和反馈</td>
+                    </tr>
+                    <tr>
+                        <td>API调用量</td>
+                        <td>≥ 10万次/天</td>
+                        <td>API调用日志统计</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>🚀 后续规划</h2>
+
+            <h3>v1.1 版本（2026年Q4）</h3>
+            <ul>
+                <li>支持更多语言（英语、日语、韩语等）</li>
+                <li>增加批量检测功能</li>
+                <li>优化检测算法，提升准确率</li>
+                <li>增加移动端SDK</li>
+            </ul>
+
+            <h3>v2.0 版本（2027年Q1）</h3>
+            <ul>
+                <li>多模态融合检测</li>
+                <li>实时流式检测</li>
+                <li>可解释性增强</li>
+                <li>企业级功能（权限管理、审计日志等）</li>
+            </ul>
+
+            <div class="success-box">
+                <strong>✅ 总结：</strong> 本开发计划为AIGC检测项目提供了清晰的路线图。通过分阶段实施、风险控制和持续优化，我们将打造一个高质量、高性能的AI内容检测平台。
+            </div>
+
+            <h2>📞 联系方式</h2>
+            <ul>
+                <li><strong>项目负责人：</strong> [姓名]</li>
+                <li><strong>邮箱：</strong> [邮箱地址]</li>
+                <li><strong>GitHub：</strong> [仓库地址]</li>
+                <li><strong>文档：</strong> [文档地址]</li>
+            </ul>
+
+            <blockquote>
+                "计划是成功的一半。通过详细的规划和严格的执行，我们将实现项目的所有目标。"
+            </blockquote>
+        </article>
+    </div>
+
+    <!-- 底部 -->
+    <footer class="footer">
+        <p>AIGC鉴伪检测系统</p>
+    </footer>
+</body>
+</html>
+
