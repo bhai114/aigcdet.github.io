@@ -1,6 +1,6 @@
 ---
 layout: null
-date: 2025-11-29
+date: 2025-11-29 23:35:18
 ---
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -264,6 +264,140 @@ date: 2025-11-29
             border-radius: 0 8px 8px 0;
         }
 
+        /* ========== 时间轴样式 ========== */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            padding-left: 100px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 42px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            background: #667eea;
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #667eea;
+            z-index: 2;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 80px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #667eea;
+            text-align: right;
+            padding-right: 15px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .timeline-description {
+            color: #666;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .timeline-description ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+
+        .timeline-description li {
+            margin: 6px 0;
+            color: #555;
+        }
+
+        .timeline-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .status-completed {
+            background: #d4edda;
+            color: #28a745;
+        }
+
+        .status-progress {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-pending {
+            background: #e2e3e5;
+            color: #6c757d;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                padding-left: 70px;
+            }
+
+            .timeline-item::before {
+                left: 22px;
+            }
+
+            .timeline-date {
+                width: 60px;
+                font-size: 12px;
+            }
+
+            .timeline-content {
+                padding: 20px;
+            }
+        }
+
         /* ========== 底部 ========== */
         .footer {
             text-align: center;
@@ -310,7 +444,6 @@ date: 2025-11-29
     <!-- 顶部导航 -->
     <header class="header">
         <nav class="nav-container">
-            <a href="/aigcdet.github.io/" class="logo">✨ 我的博客</a>
             <a href="/aigcdet.github.io/" class="back-link">← 返回首页</a>
         </nav>
     </header>
@@ -330,344 +463,160 @@ date: 2025-11-29
 
         <!-- 文章正文 -->
         <article class="article-content">
-            <h2>📋 项目概述</h2>
-            <p>
-                AIGC检测项目旨在构建一套完整的AI生成内容检测系统，涵盖<strong>文字鉴伪</strong>、<strong>图像鉴伪</strong>和<strong>事实性检测</strong>三大核心功能。
-                本项目将采用先进的人工智能技术，为内容真实性提供可靠保障。
+            <h2>📅 开发时间轴</h2>
+            <p style="margin-bottom: 40px; color: #666;">
+                以下是AIGC检测项目的开发时间轴，展示了从项目启动到正式发布的完整开发计划。
             </p>
 
-            <div class="highlight-box">
-                <strong>💡 项目愿景：</strong> 打造业界领先的AIGC检测平台，为教育、媒体、法律等领域提供可靠的内容真实性检测服务。
+            <div class="timeline">
+                <!-- 2025年12月 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2025-12</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            项目启动
+                            <span class="timeline-status status-completed">已完成</span>
+                        </div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>搭建开发环境</li>
+                                <li>配置CI/CD流程</li>
+                                <li>设计数据库架构</li>
+                                <li>搭建API框架</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2026年1月 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-01</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            基础架构完成
+                            <span class="timeline-status status-progress">进行中</span>
+                        </div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>完成数据库设计</li>
+                                <li>完成API框架搭建</li>
+                                <li>开发Web界面基础框架</li>
+                                <li>建立测试环境</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2026年2月 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-02</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            文字鉴伪模块开发
+                            <span class="timeline-status status-pending">待开始</span>
+                        </div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>实现统计特征提取算法</li>
+                                <li>训练文本分类模型</li>
+                                <li>开发水印检测功能</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2026年3月 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-03</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            图像鉴伪模块开发
+                            <span class="timeline-status status-pending">待开始</span>
+                        </div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>实现图像特征提取</li>
+                                <li>训练图像分类模型</li>
+                                <li>开发深度伪造检测算法</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2026年4月 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-04</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            事实性检测模块开发
+                            <span class="timeline-status status-pending">待开始</span>
+                        </div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>构建知识库系统</li>
+                                <li>实现事实提取和验证</li>
+                                <li>开发多源信息对比功能</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2026年5月 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-05</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            系统集成
+                            <span class="timeline-status status-pending">待开始</span>
+                        </div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>整合三大检测模块</li>
+                                <li>优化算法性能</li>
+                                <li>完善Web界面</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2026年6月 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-06</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            系统优化
+                            <span class="timeline-status status-pending">待开始</span>
+                        </div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>性能优化和调优</li>
+                                <li>编写API文档</li>
+                                <li>安全加固</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2026年7月 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-07</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            测试与发布
+                            <span class="timeline-status status-pending">待开始</span>
+                        </div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>全面功能测试</li>
+                                <li>性能测试和评估</li>
+                                <li>用户内测</li>
+                                <li>发布v1.0正式版</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <h2>🎯 项目目标</h2>
-            <ul>
-                <li><strong>准确性：</strong> 检测准确率达到 90% 以上</li>
-                <li><strong>实时性：</strong> 单次检测响应时间控制在 3 秒以内</li>
-                <li><strong>可扩展性：</strong> 支持多种内容格式和检测场景</li>
-                <li><strong>易用性：</strong> 提供友好的API接口和Web界面</li>
-            </ul>
-
-            <h2>📅 开发阶段规划</h2>
-
-            <h3>第一阶段：基础架构搭建（1-2个月）</h3>
-            <div class="info-box">
-                <strong>📅 时间：</strong> 2025年12月 - 2026年1月
-            </div>
-            <ul>
-                <li><strong>项目初始化：</strong> 搭建开发环境，配置CI/CD流程</li>
-                <li><strong>数据库设计：</strong> 设计数据模型，建立数据库架构</li>
-                <li><strong>API框架：</strong> 搭建RESTful API服务框架</li>
-                <li><strong>前端基础：</strong> 开发Web管理界面基础框架</li>
-                <li><strong>测试环境：</strong> 建立测试和开发环境</li>
-            </ul>
-
-            <h3>第二阶段：核心功能开发（2-3个月）</h3>
-            <div class="info-box">
-                <strong>📅 时间：</strong> 2026年2月 - 2026年4月
-            </div>
-            
-            <h4>2.1 文字鉴伪模块</h4>
-            <ul>
-                <li>实现统计特征提取算法</li>
-                <li>训练文本分类模型</li>
-                <li>开发水印嵌入和检测功能</li>
-                <li>优化检测准确率和速度</li>
-            </ul>
-
-            <h4>2.2 图像鉴伪模块</h4>
-            <ul>
-                <li>实现图像特征提取</li>
-                <li>训练图像分类模型</li>
-                <li>开发深度伪造检测算法</li>
-                <li>支持多种图像格式</li>
-            </ul>
-
-            <h4>2.3 事实性检测模块</h4>
-            <ul>
-                <li>构建知识库系统</li>
-                <li>实现事实提取和验证</li>
-                <li>开发多源信息对比功能</li>
-                <li>建立可信度评分机制</li>
-            </ul>
-
-            <h3>第三阶段：系统集成与优化（1-2个月）</h3>
-            <div class="info-box">
-                <strong>📅 时间：</strong> 2026年5月 - 2026年6月
-            </div>
-            <ul>
-                <li><strong>模块集成：</strong> 整合三大检测模块</li>
-                <li><strong>性能优化：</strong> 优化算法性能，提升响应速度</li>
-                <li><strong>界面完善：</strong> 完善Web界面和用户体验</li>
-                <li><strong>API文档：</strong> 编写完整的API文档</li>
-                <li><strong>安全加固：</strong> 加强系统安全性和稳定性</li>
-            </ul>
-
-            <h3>第四阶段：测试与发布（1个月）</h3>
-            <div class="info-box">
-                <strong>📅 时间：</strong> 2026年7月
-            </div>
-            <ul>
-                <li><strong>功能测试：</strong> 全面测试所有功能模块</li>
-                <li><strong>性能测试：</strong> 进行压力测试和性能评估</li>
-                <li><strong>用户测试：</strong> 邀请内测用户进行体验</li>
-                <li><strong>文档完善：</strong> 完善用户手册和技术文档</li>
-                <li><strong>正式发布：</strong> 发布v1.0正式版本</li>
-            </ul>
-
-            <h2>🛠️ 技术栈选择</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>模块</th>
-                        <th>技术选型</th>
-                        <th>说明</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>后端框架</td>
-                        <td>Python + FastAPI</td>
-                        <td>高性能异步框架，支持快速开发</td>
-                    </tr>
-                    <tr>
-                        <td>机器学习</td>
-                        <td>PyTorch / TensorFlow</td>
-                        <td>深度学习模型训练和推理</td>
-                    </tr>
-                    <tr>
-                        <td>数据库</td>
-                        <td>PostgreSQL + Redis</td>
-                        <td>关系型数据库 + 缓存</td>
-                    </tr>
-                    <tr>
-                        <td>前端框架</td>
-                        <td>React + TypeScript</td>
-                        <td>现代化前端开发</td>
-                    </tr>
-                    <tr>
-                        <td>部署</td>
-                        <td>Docker + Kubernetes</td>
-                        <td>容器化部署，支持弹性扩展</td>
-                    </tr>
-                    <tr>
-                        <td>监控</td>
-                        <td>Prometheus + Grafana</td>
-                        <td>系统监控和性能分析</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>👥 团队分工</h2>
-
-            <h3>后端开发组（3人）</h3>
-            <ul>
-                <li>负责API开发和业务逻辑实现</li>
-                <li>负责数据库设计和优化</li>
-                <li>负责系统架构设计</li>
-            </ul>
-
-            <h3>算法组（4人）</h3>
-            <ul>
-                <li>负责检测算法研发和优化</li>
-                <li>负责模型训练和调优</li>
-                <li>负责数据收集和标注</li>
-            </ul>
-
-            <h3>前端开发组（2人）</h3>
-            <ul>
-                <li>负责Web界面开发</li>
-                <li>负责用户体验优化</li>
-                <li>负责移动端适配</li>
-            </ul>
-
-            <h3>测试组（2人）</h3>
-            <ul>
-                <li>负责功能测试和性能测试</li>
-                <li>负责自动化测试脚本编写</li>
-                <li>负责质量保证</li>
-            </ul>
-
-            <h2>📊 里程碑计划</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>里程碑</th>
-                        <th>时间节点</th>
-                        <th>交付物</th>
-                        <th>状态</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>M1: 项目启动</td>
-                        <td>2025-12-01</td>
-                        <td>项目计划、技术方案</td>
-                        <td>✅ 已完成</td>
-                    </tr>
-                    <tr>
-                        <td>M2: 基础架构完成</td>
-                        <td>2026-01-31</td>
-                        <td>开发环境、数据库、API框架</td>
-                        <td>🔄 进行中</td>
-                    </tr>
-                    <tr>
-                        <td>M3: 文字鉴伪模块</td>
-                        <td>2026-03-15</td>
-                        <td>文字检测功能、API接口</td>
-                        <td>⏳ 待开始</td>
-                    </tr>
-                    <tr>
-                        <td>M4: 图像鉴伪模块</td>
-                        <td>2026-04-15</td>
-                        <td>图像检测功能、API接口</td>
-                        <td>⏳ 待开始</td>
-                    </tr>
-                    <tr>
-                        <td>M5: 事实性检测模块</td>
-                        <td>2026-05-15</td>
-                        <td>事实检测功能、知识库</td>
-                        <td>⏳ 待开始</td>
-                    </tr>
-                    <tr>
-                        <td>M6: 系统集成</td>
-                        <td>2026-06-30</td>
-                        <td>完整系统、Web界面</td>
-                        <td>⏳ 待开始</td>
-                    </tr>
-                    <tr>
-                        <td>M7: 正式发布</td>
-                        <td>2026-07-31</td>
-                        <td>v1.0正式版、文档</td>
-                        <td>⏳ 待开始</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>💰 资源需求</h2>
-
-            <h3>硬件资源</h3>
-            <ul>
-                <li><strong>GPU服务器：</strong> 4台 NVIDIA A100（用于模型训练）</li>
-                <li><strong>CPU服务器：</strong> 8台（用于API服务和数据库）</li>
-                <li><strong>存储：</strong> 100TB（用于数据存储）</li>
-                <li><strong>网络：</strong> 高带宽网络连接</li>
-            </ul>
-
-            <h3>软件资源</h3>
-            <ul>
-                <li>开发工具和IDE许可证</li>
-                <li>云服务平台（AWS/Azure/阿里云）</li>
-                <li>监控和日志服务</li>
-                <li>代码管理和CI/CD工具</li>
-            </ul>
-
-            <h3>人力资源</h3>
-            <ul>
-                <li>开发人员：11人</li>
-                <li>项目经理：1人</li>
-                <li>产品经理：1人</li>
-                <li>运维人员：2人</li>
-            </ul>
-
-            <h2>⚠️ 风险与应对</h2>
-
-            <div class="warning-box">
-                <strong>⚠️ 主要风险：</strong>
-            </div>
-
-            <h3>技术风险</h3>
-            <ul>
-                <li><strong>检测准确率不达标：</strong> 持续优化算法，增加训练数据</li>
-                <li><strong>性能瓶颈：</strong> 优化模型结构，使用模型压缩技术</li>
-                <li><strong>新模型挑战：</strong> 建立持续学习机制，及时更新检测模型</li>
-            </ul>
-
-            <h3>进度风险</h3>
-            <ul>
-                <li><strong>开发延期：</strong> 建立敏捷开发流程，及时调整计划</li>
-                <li><strong>人员变动：</strong> 建立知识文档，做好人员备份</li>
-                <li><strong>需求变更：</strong> 建立需求管理流程，控制变更范围</li>
-            </ul>
-
-            <h3>质量风险</h3>
-            <ul>
-                <li><strong>测试不充分：</strong> 建立完善的测试体系，自动化测试</li>
-                <li><strong>安全漏洞：</strong> 定期安全审计，建立安全开发规范</li>
-                <li><strong>用户体验差：</strong> 早期用户测试，持续优化界面</li>
-            </ul>
-
-            <h2>📈 成功指标</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>指标</th>
-                        <th>目标值</th>
-                        <th>测量方法</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>检测准确率</td>
-                        <td>≥ 90%</td>
-                        <td>使用标准测试集评估</td>
-                    </tr>
-                    <tr>
-                        <td>响应时间</td>
-                        <td>≤ 3秒</td>
-                        <td>API响应时间统计</td>
-                    </tr>
-                    <tr>
-                        <td>系统可用性</td>
-                        <td>≥ 99.5%</td>
-                        <td>系统运行时间监控</td>
-                    </tr>
-                    <tr>
-                        <td>用户满意度</td>
-                        <td>≥ 4.5/5.0</td>
-                        <td>用户调研和反馈</td>
-                    </tr>
-                    <tr>
-                        <td>API调用量</td>
-                        <td>≥ 10万次/天</td>
-                        <td>API调用日志统计</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>🚀 后续规划</h2>
-
-            <h3>v1.1 版本（2026年Q4）</h3>
-            <ul>
-                <li>支持更多语言（英语、日语、韩语等）</li>
-                <li>增加批量检测功能</li>
-                <li>优化检测算法，提升准确率</li>
-                <li>增加移动端SDK</li>
-            </ul>
-
-            <h3>v2.0 版本（2027年Q1）</h3>
-            <ul>
-                <li>多模态融合检测</li>
-                <li>实时流式检测</li>
-                <li>可解释性增强</li>
-                <li>企业级功能（权限管理、审计日志等）</li>
-            </ul>
-
-            <div class="success-box">
-                <strong>✅ 总结：</strong> 本开发计划为AIGC检测项目提供了清晰的路线图。通过分阶段实施、风险控制和持续优化，我们将打造一个高质量、高性能的AI内容检测平台。
-            </div>
-
-            <h2>📞 联系方式</h2>
-            <ul>
-                <li><strong>项目负责人：</strong> [姓名]</li>
-                <li><strong>邮箱：</strong> [邮箱地址]</li>
-                <li><strong>GitHub：</strong> [仓库地址]</li>
-                <li><strong>文档：</strong> [文档地址]</li>
-            </ul>
-
-            <blockquote>
-                "计划是成功的一半。通过详细的规划和严格的执行，我们将实现项目的所有目标。"
-            </blockquote>
         </article>
     </div>
 
