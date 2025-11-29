@@ -19,11 +19,13 @@
                     <li>
                         <a href="{{ site.baseurl }}/">Home</a>
                     </li>
-                    {% for page in site.pages %}{% if page.title %}
-                    <li>
-                        <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-                    </li>
-                    {% endif %}{% endfor %}
+                    {% for page in site.pages %}
+                        {% if page.title %}
+                            <li>
+                                <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
         </div>
@@ -31,6 +33,7 @@
     </div>
     <!-- /.container -->
 </nav>
+
 <script>
     // Drop Bootstarp low-performance Navbar
     // Use customize navbar with high-quality material design animation
@@ -49,7 +52,7 @@
                 if($navbar.className.indexOf('in') < 0) {
                     $collapse.style.height = "0px"
                 }
-            },400)
+            }, 400)
         },
         open: function(){
             $collapse.style.height = "auto"
@@ -61,7 +64,7 @@
     $toggle.addEventListener('click', function(e){
         if ($navbar.className.indexOf('in') > 0) {
             __HuxNav__.close()
-        }else{
+        } else {
             __HuxNav__.open()
         }
     })
