@@ -347,13 +347,7 @@ layout: null
             <a href="{{ site.baseurl }}{{ post.url }}" class="post-item">
                 <div class="post-header">
                     <h3 class="post-title">{{ post.title }}</h3>
-                    <span class="post-date">
-                        {% if post.date %}
-                            {{ post.date | date: "%Y年%m月%d日 %H:%M:%S" }}
-                        {% else %}
-                            {{ "now" | date: "%Y年%m月%d日 %H:%M:%S" }}
-                        {% endif %}
-                    </span>
+                    <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
                 </div>
                 
                 {% if post.subtitle %}
