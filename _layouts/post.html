@@ -13,14 +13,14 @@ layout: default
         background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
     }
 
-    {% if page.header-mask %}
+    {%- if page.header-mask -%}
     header.intro-header .header-mask{
         width: 100%;
         height: 100%;
         position: absolute;
         background: rgba(0,0,0, {{ page.header-mask }});
     }
-    {% endif %}
+    {%- endif -%}
 </style>
 
 <header class="intro-header">
@@ -30,9 +30,9 @@ layout: default
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
                     <div class="tags">
-                        {% for tag in page.tags %}
+                        {%- for tag in page.tags -%}
                             <a class="tag" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
-                        {% endfor %}
+                        {%- endfor -%}
                     </div>
                     <h1>{{ page.title }}</h1>
                     {% comment %}
@@ -59,27 +59,27 @@ layout: default
                 <hr style="visibility: hidden;">
 
                 <ul class="pager">
-                    {% if page.previous.url %}
+                    {%- if page.previous.url -%}
                         <li class="previous">
                             <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
                                 Previous<br>
                                 <span>{{page.previous.title}}</span>
                             </a>
                         </li>
-                    {% endif %}
+                    {%- endif -%}
                     
-                    {% if page.next.url %}
+                    {%- if page.next.url -%}
                         <li class="next">
                             <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
                                 Next<br>
                                 <span>{{page.next.title}}</span>
                             </a>
                         </li>
-                    {% endif %}
+                    {%- endif -%}
                 </ul>
 
                 <!--Gitalk评论start  -->
-                {% if site.gitalk.enable %}
+                {%- if site.gitalk.enable -%}
                     <!-- 引入Gitalk评论插件  -->
                     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                     <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
@@ -99,20 +99,20 @@ layout: default
                         });
                         gitalk.render('gitalk-container');
                     </script>
-                {% endif %}
+                {%- endif -%}
                 <!-- Gitalk end -->
 
-                {% if site.disqus_username %}
+                {%- if site.disqus_username -%}
                     <!-- disqus 评论框 start -->
                     <div class="comment">
                         <div id="disqus_thread" class="disqus-thread"></div>
                     </div>
                     <!-- disqus 评论框 end -->
-                {% endif %}
+                {%- endif -%}
             </div>
 
             <!-- Side Catalog Container -->
-            {% if page.catalog %}
+            {%- if page.catalog -%}
                 <div class="col-lg-2 col-lg-offset-0 visible-lg-block sidebar-container catalog-container">
                     <div class="side-catalog">
                         <hr class="hidden-sm hidden-xs">
@@ -122,44 +122,44 @@ layout: default
                         <ul class="catalog-body"></ul>
                     </div>
                 </div>
-            {% endif %}
+            {%- endif -%}
 
             <!-- Sidebar Container -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 sidebar-container">
                 <!-- Featured Tags -->
-                {% if site.featured-tags %}
+                {%- if site.featured-tags -%}
                     <section>
                         <hr class="hidden-sm hidden-xs">
                         <h5><a href="/tags/">FEATURED TAGS</a></h5>
                         <div class="tags">
-                            {% for tag in site.tags %}
-                                {% if tag[1].size > {{site.featured-condition-size}} %}
+                            {%- for tag in site.tags -%}
+                                {%- if tag[1].size > site.featured-condition-size -%}
                                     <a href="/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
                                         {{ tag[0] }}
                                     </a>
-                                {% endif %}
-                            {% endfor %}
+                                {%- endif -%}
+                            {%- endfor -%}
                         </div>
                     </section>
-                {% endif %}
+                {%- endif -%}
 
                 <!-- Friends Blog -->
-                {% if site.friends %}
+                {%- if site.friends -%}
                     <hr>
                     <h5>FRIENDS</h5>
                     <ul class="list-inline">
-                        {% for friend in site.friends %}
+                        {%- for friend in site.friends -%}
                             <li><a href="{{friend.href}}">{{friend.title}}</a></li>
-                        {% endfor %}
+                        {%- endfor -%}
                     </ul>
-                {% endif %}
+                {%- endif -%}
             </div>
         </div>
     </div>
 </article>
 
 
-{% if site.disqus_username %}
+{%- if site.disqus_username -%}
     <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES * * */
@@ -174,10 +174,10 @@ layout: default
         })();
     </script>
     <!-- disqus 公共JS代码 end -->
-{% endif %}
+{%- endif -%}
 
 
-{% if site.anchorjs %}
+{%- if site.anchorjs -%}
     <!-- async load function -->
     <script>
         function async(u, c) {
@@ -212,4 +212,4 @@ layout: default
             }
         }
     </style>
-{% endif %}
+{%- endif -%}

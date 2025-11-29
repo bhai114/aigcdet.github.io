@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ul class="list-inline text-center">
-                    {% if site.RSS %}
+                    {%- if site.RSS -%}
                         <li>
                             <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
                                 <span class="fa-stack fa-lg">
@@ -13,10 +13,10 @@
                                 </span>
                             </a>
                         </li>
-                    {% endif %}
+                    {%- endif -%}
                     
                     <!-- add jianshu add target = "_blank" to <a> by BY -->
-                    {% if site.jianshu_username %}
+                    {%- if site.jianshu_username -%}
                         <li>
                             <a target="_blank" href="https://www.jianshu.com/u/{{ site.jianshu_username }}">
                                 <span class="fa-stack fa-lg">
@@ -25,9 +25,9 @@
                                 </span>
                             </a>
                         </li>
-                    {% endif %}
+                    {%- endif -%}
                     
-                    {% if site.twitter_username %}
+                    {%- if site.twitter_username -%}
                         <li>
                             <a href="https://twitter.com/{{ site.twitter_username }}">
                                 <span class="fa-stack fa-lg">
@@ -36,10 +36,10 @@
                                 </span>
                             </a>
                         </li>
-                    {% endif %}
+                    {%- endif -%}
 
                     <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
-                    {% if site.zhihu_username %}
+                    {%- if site.zhihu_username -%}
                         <li>
                             <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
                                 <span class="fa-stack fa-lg">
@@ -48,9 +48,9 @@
                                 </span>
                             </a>
                         </li>
-                    {% endif %}
+                    {%- endif -%}
                     
-                    {% if site.weibo_username %}
+                    {%- if site.weibo_username -%}
                         <li>
                             <a target="_blank" href="http://weibo.com/{{ site.weibo_username }}">
                                 <span class="fa-stack fa-lg">
@@ -59,9 +59,9 @@
                                 </span>
                             </a>
                         </li>
-                    {% endif %}
+                    {%- endif -%}
 
-                    {% if site.facebook_username %}
+                    {%- if site.facebook_username -%}
                         <li>
                             <a target="_blank" href="https://www.facebook.com/{{ site.facebook_username }}">
                                 <span class="fa-stack fa-lg">
@@ -70,9 +70,9 @@
                                 </span>
                             </a>
                         </li>
-                    {% endif %}
+                    {%- endif -%}
                     
-                    {% if site.github_username %}
+                    {%- if site.github_username -%}
                         <li>
                             <a target="_blank" href="https://github.com/{{ site.github_username }}">
                                 <span class="fa-stack fa-lg">
@@ -81,9 +81,9 @@
                                 </span>
                             </a>
                         </li>
-                    {% endif %}
+                    {%- endif -%}
                     
-                    {% if site.linkedin_username %}
+                    {%- if site.linkedin_username -%}
                         <li>
                             <a target="_blank" href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
                                 <span class="fa-stack fa-lg">
@@ -92,7 +92,7 @@
                                 </span>
                             </a>
                         </li>
-                    {% endif %}
+                    {%- endif -%}
                 </ul>
                 
                 <p class="copyright text-muted">
@@ -120,7 +120,7 @@
 <script src="{{ "/js/hux-blog.min.js " | prepend: site.baseurl }}"></script>
 
 <!-- Service Worker -->
-{% if site.service-worker %}
+{%- if site.service-worker -%}
     <script type="text/javascript">
         if(navigator.serviceWorker){
             // For security reasons, a service worker can only control the pages that are in the same directory level or below it. That's why we put sw.js at ROOT level.
@@ -130,7 +130,7 @@
                 .catch((error) => {console.log('ServiceWorker registration failed: ', error)})
         }
     </script>
-{% endif %}
+{%- endif -%}
 
 <!-- async load function -->
 <script>
@@ -186,7 +186,7 @@
 </script>
 
 <!-- Google Analytics -->
-{% if site.ga_track_id %}
+{%- if site.ga_track_id -%}
     <script>
         // dynamic User by Hux
         var _gaId = '{{ site.ga_track_id }}';
@@ -201,10 +201,10 @@
         ga('create', _gaId, _gaDomain);
         ga('send', 'pageview');
     </script>
-{% endif %}
+{%- endif -%}
 
 <!-- Baidu Tongji -->
-{% if site.ba_track_id %}
+{%- if site.ba_track_id -%}
     <script>
         // dynamic User by Hux
         var _baId = '{{ site.ba_track_id }}';
@@ -218,10 +218,10 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
-{% endif %}
+{%- endif -%}
 
 <!-- Side Catalog -->
-{% if page.catalog %}
+{%- if page.catalog -%}
     <script type="text/javascript">
         function generateCatalog (selector) {
             var P = $('div.post-container'),a,n,t,l,i,c;
@@ -265,4 +265,4 @@
             });
         });
     </script>
-{% endif %}
+{%- endif -%}
